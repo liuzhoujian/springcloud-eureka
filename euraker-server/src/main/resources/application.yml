@@ -1,0 +1,23 @@
+#端口号
+server:
+  port: 8100
+
+eureka:
+  instance:
+    #注册到本地地址
+    hostname: 127.0.0.1
+
+  client:
+    serviceUrl:
+      #客户端访问的路径
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+    #自己就是注册中心，不需要注册自己
+    register-with-eureka: false
+    #自己就是注册中心，不需要检索自己
+    fetch-registry: false
+
+  server:
+    # 测试时关闭自我保护机制，保证不可用服务及时踢出
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000
